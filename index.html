@@ -79,6 +79,133 @@ header {
   letter-spacing: 0.08em;
 }
 
+/* ── THEME BUTTON ── */
+.theme-btn {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  color: var(--muted);
+  font-family: var(--mono);
+  font-size: 0.7rem;
+  letter-spacing: 0.1em;
+  padding: 6px 12px;
+  cursor: pointer;
+  display: flex; align-items: center; gap: 6px;
+  transition: all 0.15s;
+  flex-shrink: 0;
+}
+.theme-btn:hover { border-color: var(--accent); color: var(--text); }
+.theme-btn svg { flex-shrink: 0; }
+
+/* ── THEME PANEL ── */
+.theme-panel {
+  display: none;
+  width: 100%;
+  max-width: 720px;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  overflow: hidden;
+  margin-bottom: 1.5rem;
+}
+.theme-panel.open { display: block; }
+
+.theme-panel-head {
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 0.9rem 1.25rem;
+  border-bottom: 1px solid var(--border);
+}
+.theme-panel-title {
+  font-family: var(--mono);
+  font-size: 0.78rem;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  color: var(--text);
+}
+.theme-close {
+  background: none; border: none; color: var(--muted);
+  cursor: pointer; font-size: 1rem; padding: 2px 6px; border-radius: 4px;
+  transition: color 0.15s;
+}
+.theme-close:hover { color: var(--text); }
+
+.theme-body { padding: 1.25rem; display: flex; flex-direction: column; gap: 1.25rem; }
+
+/* Preset chips */
+.preset-row { display: flex; gap: 8px; flex-wrap: wrap; }
+.preset-chip {
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  padding: 5px 12px;
+  font-family: var(--mono);
+  font-size: 0.68rem;
+  letter-spacing: 0.08em;
+  cursor: pointer;
+  background: var(--surface2);
+  color: var(--muted);
+  transition: all 0.15s;
+  display: flex; align-items: center; gap: 7px;
+}
+.preset-chip:hover { border-color: var(--accent); color: var(--text); }
+.preset-chip.active { border-color: var(--accent); color: var(--accent); }
+.chip-dot { width: 8px; height: 8px; border-radius: 50%; flex-shrink: 0; }
+
+/* Color rows */
+.color-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+}
+@media (max-width: 500px) { .color-grid { grid-template-columns: 1fr; } }
+
+.color-row {
+  display: flex; align-items: center; gap: 10px;
+  background: var(--surface2);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 8px 12px;
+}
+.color-swatch {
+  width: 26px; height: 26px; border-radius: 5px;
+  border: 1px solid var(--border2);
+  cursor: pointer;
+  flex-shrink: 0;
+  position: relative; overflow: hidden;
+}
+.color-swatch input[type=color] {
+  position: absolute; inset: -4px; width: calc(100% + 8px); height: calc(100% + 8px);
+  opacity: 0; cursor: pointer; border: none; padding: 0;
+}
+.color-info { flex: 1; min-width: 0; }
+.color-label {
+  font-family: var(--mono);
+  font-size: 0.65rem;
+  letter-spacing: 0.1em;
+  color: var(--muted);
+  display: block; margin-bottom: 2px;
+}
+.color-hex {
+  font-family: var(--mono);
+  font-size: 0.72rem;
+  color: var(--text);
+}
+
+/* Reset button */
+.theme-reset {
+  background: none;
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  color: var(--muted);
+  font-family: var(--mono);
+  font-size: 0.68rem;
+  letter-spacing: 0.1em;
+  padding: 5px 14px;
+  cursor: pointer;
+  transition: all 0.15s;
+  align-self: flex-start;
+}
+.theme-reset:hover { border-color: var(--danger); color: var(--danger); }
+
 .tabs {
   width: 100%;
   max-width: 720px;
@@ -365,11 +492,75 @@ footer {
 
 <header>
   <div class="logo">
-    <div class="logo-glyph">▣</div>
-    SCREENLINK
+    <div class="logo-glyph">
+      <svg width="18" height="14" viewBox="0 0 18 14" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M1 1L4 13L6.5 6L9 13L12 1" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+        <path d="M16.5 3.5C16.5 2.5 15.7 2 14.8 2C13.9 2 13 2.4 13 3.2C13 4 13.9 4.3 14.8 4.6C15.7 4.9 16.5 5.3 16.5 6.3C16.5 7.3 15.6 8 14.5 8C13.4 8 13 7.3 13 6.5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/>
+      </svg>
+    </div>
+    WEBSHARE
   </div>
-  <span class="tagline">NO SERVER · NO SIGNUP · WORKS FROM file://</span>
+  <div style="display:flex;align-items:center;gap:12px;">
+    <span class="tagline">NO SERVER · NO SIGNUP · file://</span>
+    <button class="theme-btn" onclick="toggleThemePanel()">
+      <svg width="13" height="13" viewBox="0 0 16 16" fill="none"><circle cx="8" cy="8" r="3" stroke="currentColor" stroke-width="1.5"/><path d="M8 1v2M8 13v2M1 8h2M13 8h2M3.05 3.05l1.41 1.41M11.54 11.54l1.41 1.41M3.05 12.95l1.41-1.41M11.54 4.46l1.41-1.41" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/></svg>
+      THEME
+    </button>
+  </div>
 </header>
+
+<!-- ══════ THEME PANEL ══════ -->
+<div class="theme-panel" id="themePanel">
+  <div class="theme-panel-head">
+    <span class="theme-panel-title">THEME EDITOR</span>
+    <button class="theme-close" onclick="toggleThemePanel()">✕</button>
+  </div>
+  <div class="theme-body">
+    <!-- Presets -->
+    <div>
+      <div class="blob-label" style="margin-bottom:8px;">PRESETS</div>
+      <div class="preset-row" id="presetRow">
+        <button class="preset-chip active" onclick="applyPreset('default')"><span class="chip-dot" style="background:#00d4aa;"></span>DEFAULT</button>
+        <button class="preset-chip" onclick="applyPreset('ocean')"><span class="chip-dot" style="background:#0ea5e9;"></span>OCEAN</button>
+        <button class="preset-chip" onclick="applyPreset('violet')"><span class="chip-dot" style="background:#a855f7;"></span>VIOLET</button>
+        <button class="preset-chip" onclick="applyPreset('amber')"><span class="chip-dot" style="background:#f59e0b;"></span>AMBER</button>
+        <button class="preset-chip" onclick="applyPreset('rose')"><span class="chip-dot" style="background:#f43f5e;"></span>ROSE</button>
+        <button class="preset-chip" onclick="applyPreset('light')"><span class="chip-dot" style="background:#f1f5f9;border:1px solid #cbd5e1;"></span>LIGHT</button>
+      </div>
+    </div>
+    <!-- Color pickers -->
+    <div>
+      <div class="blob-label" style="margin-bottom:8px;">CUSTOM COLORS</div>
+      <div class="color-grid">
+        <div class="color-row">
+          <div class="color-swatch" id="sw-accent"><input type="color" id="pick-accent" oninput="setVar('--accent',this.value,'sw-accent','hex-accent')"></div>
+          <div class="color-info"><span class="color-label">ACCENT</span><span class="color-hex" id="hex-accent">#00d4aa</span></div>
+        </div>
+        <div class="color-row">
+          <div class="color-swatch" id="sw-accent2"><input type="color" id="pick-accent2" oninput="setVar('--accent2',this.value,'sw-accent2','hex-accent2')"></div>
+          <div class="color-info"><span class="color-label">ACCENT 2</span><span class="color-hex" id="hex-accent2">#0077ff</span></div>
+        </div>
+        <div class="color-row">
+          <div class="color-swatch" id="sw-bg"><input type="color" id="pick-bg" oninput="setVar('--bg',this.value,'sw-bg','hex-bg')"></div>
+          <div class="color-info"><span class="color-label">BACKGROUND</span><span class="color-hex" id="hex-bg">#080b0f</span></div>
+        </div>
+        <div class="color-row">
+          <div class="color-swatch" id="sw-surface"><input type="color" id="pick-surface" oninput="setVar('--surface',this.value,'sw-surface','hex-surface')"></div>
+          <div class="color-info"><span class="color-label">SURFACE</span><span class="color-hex" id="hex-surface">#0f1318</span></div>
+        </div>
+        <div class="color-row">
+          <div class="color-swatch" id="sw-text"><input type="color" id="pick-text" oninput="setVar('--text',this.value,'sw-text','hex-text')"></div>
+          <div class="color-info"><span class="color-label">TEXT</span><span class="color-hex" id="hex-text">#dde3ec</span></div>
+        </div>
+        <div class="color-row">
+          <div class="color-swatch" id="sw-border"><input type="color" id="pick-border" oninput="setVar('--border',this.value,'sw-border','hex-border')"></div>
+          <div class="color-info"><span class="color-label">BORDER</span><span class="color-hex" id="hex-border">#1f2733</span></div>
+        </div>
+      </div>
+    </div>
+    <button class="theme-reset" onclick="resetTheme()">↺ RESET TO DEFAULT</button>
+  </div>
+</div>
 
 <div class="tabs">
   <button class="tab-btn active" id="tabShare" onclick="switchTab('share')">
@@ -799,6 +990,91 @@ function viewerDisconnect() {
   document.getElementById('vFsBtn').style.display = 'none';
   setInfo('vInfo3', 'Disconnected.', '');
 }
+
+// ── THEME EDITOR ─────────────────────────────────────────
+
+const PRESETS = {
+  default: { '--accent':'#00d4aa','--accent2':'#0077ff','--bg':'#080b0f','--surface':'#0f1318','--surface2':'#171c23','--border':'#1f2733','--border2':'#2a3444','--text':'#dde3ec','--muted':'#5a6a80','--dim':'#2d3a4a' },
+  ocean:   { '--accent':'#0ea5e9','--accent2':'#06b6d4','--bg':'#060d14','--surface':'#0c1a27','--surface2':'#112333','--border':'#1a3044','--border2':'#234158','--text':'#e0eef8','--muted':'#527a99','--dim':'#1e3a52' },
+  violet:  { '--accent':'#a855f7','--accent2':'#6366f1','--bg':'#09060f','--surface':'#110d1e','--surface2':'#18142a','--border':'#261d3e','--border2':'#342850','--text':'#ede8f8','--muted':'#6b5a8a','--dim':'#2a1e46' },
+  amber:   { '--accent':'#f59e0b','--accent2':'#ef4444','--bg':'#0d0900','--surface':'#1a1200','--surface2':'#221800','--border':'#332200','--border2':'#442e00','--text':'#fdf3dc','--muted':'#8a7040','--dim':'#3a2800' },
+  rose:    { '--accent':'#f43f5e','--accent2':'#ec4899','--bg':'#0d0609','--surface':'#1a0c11','--surface2':'#221018','--border':'#38101e','--border2':'#4a1628','--text':'#fde8ee','--muted':'#8a4d60','--dim':'#3a0e1c' },
+  light:   { '--accent':'#0077ff','--accent2':'#7c3aed','--bg':'#f8fafc','--surface':'#ffffff','--surface2':'#f1f5f9','--border':'#e2e8f0','--border2':'#cbd5e1','--text':'#0f172a','--muted':'#64748b','--dim':'#94a3b8' },
+};
+
+const COLOR_VARS = ['--accent','--accent2','--bg','--surface','--text','--border'];
+const PICKER_IDS = { '--accent':'pick-accent','--accent2':'pick-accent2','--bg':'pick-bg','--surface':'pick-surface','--text':'pick-text','--border':'pick-border' };
+const SWATCH_IDS = { '--accent':'sw-accent','--accent2':'sw-accent2','--bg':'sw-bg','--surface':'sw-surface','--text':'sw-text','--border':'sw-border' };
+const HEX_IDS    = { '--accent':'hex-accent','--accent2':'hex-accent2','--bg':'hex-bg','--surface':'hex-surface','--text':'hex-text','--border':'hex-border' };
+
+function toggleThemePanel() {
+  const p = document.getElementById('themePanel');
+  p.classList.toggle('open');
+  if (p.classList.contains('open')) syncPickersToDOM();
+}
+
+function setVar(varName, hex, swatchId, hexId) {
+  document.documentElement.style.setProperty(varName, hex);
+  document.getElementById(swatchId).style.background = hex;
+  document.getElementById(hexId).textContent = hex;
+  // also update grid overlay accent if accent changes
+  if (varName === '--accent') updateGridAccent(hex);
+  clearActivePreset();
+}
+
+function updateGridAccent(hex) {
+  const r = parseInt(hex.slice(1,3),16), g = parseInt(hex.slice(3,5),16), b = parseInt(hex.slice(5,7),16);
+  document.body.style.backgroundImage =
+    `linear-gradient(rgba(${r},${g},${b},0.025) 1px, transparent 1px),linear-gradient(90deg, rgba(${r},${g},${b},0.025) 1px, transparent 1px)`;
+}
+
+function applyPreset(name) {
+  const p = PRESETS[name]; if (!p) return;
+  const root = document.documentElement;
+  Object.entries(p).forEach(([k,v]) => root.style.setProperty(k,v));
+  if (p['--accent']) updateGridAccent(p['--accent']);
+  syncPickersToDOM();
+  document.querySelectorAll('.preset-chip').forEach(c => c.classList.remove('active'));
+  const chips = document.querySelectorAll('.preset-chip');
+  chips.forEach(c => { if (c.getAttribute('onclick').includes(`'${name}'`)) c.classList.add('active'); });
+}
+
+function clearActivePreset() {
+  document.querySelectorAll('.preset-chip').forEach(c => c.classList.remove('active'));
+}
+
+function syncPickersToDOM() {
+  const style = getComputedStyle(document.documentElement);
+  COLOR_VARS.forEach(v => {
+    const raw = style.getPropertyValue(v).trim();
+    const hex = raw.startsWith('#') ? raw : rgbToHex(raw);
+    const swEl = document.getElementById(SWATCH_IDS[v]);
+    const hexEl = document.getElementById(HEX_IDS[v]);
+    const pickEl = document.getElementById(PICKER_IDS[v]);
+    if (swEl) swEl.style.background = hex;
+    if (hexEl) hexEl.textContent = hex;
+    if (pickEl && hex.length === 7) pickEl.value = hex;
+  });
+}
+
+function rgbToHex(rgb) {
+  const m = rgb.match(/\d+/g); if (!m || m.length < 3) return '#000000';
+  return '#' + m.slice(0,3).map(n => parseInt(n).toString(16).padStart(2,'0')).join('');
+}
+
+function resetTheme() { applyPreset('default'); }
+
+// Init swatches on load
+window.addEventListener('DOMContentLoaded', () => {
+  const defaults = PRESETS.default;
+  COLOR_VARS.forEach(v => {
+    const hex = defaults[v] || '#000000';
+    const sw = document.getElementById(SWATCH_IDS[v]);
+    const pick = document.getElementById(PICKER_IDS[v]);
+    if (sw) sw.style.background = hex;
+    if (pick) pick.value = hex;
+  });
+});
 </script>
 </body>
 </html>
